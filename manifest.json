@@ -5,7 +5,7 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "merged-firmware.bin", "offset": 0 }
+        { "path": "Multi_Display.ino.merged.bin", "offset": 0 }
       ]
     }
   ]

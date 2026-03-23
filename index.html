@@ -12,10 +12,8 @@
   </div><br>
 
   <script type="module">
-    /* Korrigierter Link: unpkg (mit g am Ende!) */
-    const k = ["https://unpkg.com", "esp-web-tools@10.1.2", "dist", "web-install-button.js"];
-    const url = k.join("/");
-    import(url);
+    /* Wir nutzen jsDelivr, wie von GitHub empfohlen (besseres CORS) */
+    import "https://cdn.jsdelivr.net/npm/esp-web-tools@10.1.2/dist/web-install-button.js";
   </script>
 
   <esp-web-install-button manifest="./manifest.json">

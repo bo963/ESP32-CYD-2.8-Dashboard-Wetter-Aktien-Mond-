@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
   <meta charset="utf-8">
   <title>ESP32 Installer</title>
@@ -7,13 +7,15 @@
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
   
-    <script type="module">
-    /* Korrigierter Rueckwaerts-Link */
-    const r = "sj.nottub-llatsni-bew/tsid/01@sloot-bew-pse/moc.gkpun//:sptth";
-    const link = r.split("").reverse().join("");
+  <script type="module">
+    /* Wir nutzen einen Zahlencode, damit Chrome den Link NICHT kuerzt */
+    const hex = "68747470733a2f2f756e706b672e636f6d2f6573702d7765622d746f6f6c734031302f646973742f7765622d696e7374616c6c2d627574746f6e2e6a73";
+    let link = "";
+    for (let i = 0; i < hex.length; i += 2) {
+      link += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    }
     import(link);
   </script>
-
 
   <esp-web-install-button manifest="./manifest.json">
     <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">

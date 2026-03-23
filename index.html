@@ -10,9 +10,12 @@
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
 
-  <!-- Hier laden wir das Skript ueber einen Trick, den GitHub nicht kuerzen kann -->
   <script type="module">
-    import("https://unpkg.com");
+    // Wir stueckeln den Link, damit GitHub ihn NICHT kuerzen kann
+    const a = "https://unpkg.com";
+    const b = "esp-web-tools@10/";
+    const c = "dist/web-install-button.js";
+    import(a + b + c);
   </script>
 
   <esp-web-install-button manifest="./manifest.json">

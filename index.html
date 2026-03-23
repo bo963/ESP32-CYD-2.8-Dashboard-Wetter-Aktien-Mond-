@@ -7,15 +7,23 @@
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
   
-  <script type="module">
-    /* Wir nutzen einen Zahlencode, damit Chrome den Link NICHT kuerzt */
-    const hex = "68747470733a2f2f756e706b672e636f6d2f6573702d7765622d746f6f6c734031302f646973742f7765622d696e7374616c6c2d627574746f6e2e6a73";
-    let link = "";
-    for (let i = 0; i < hex.length; i += 2) {
-      link += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+  <script>
+    /* Hex-Code verhindert das Kuerzen der URL durch den Browser */
+    const h = "68747470733a2f2f756e706b672e636f6d2f6573702d7765622d746f6f6c734031302f646973742f7765622d696e7374616c6c2d627574746f6e2e6a73";
+    let l = "";
+    for (let i = 0; i < h.length; i += 2) {
+      l += String.fromCharCode(parseInt(h.substr(i, 2), 16));
     }
-    import(link);
+    /* Skript direkt in den Header einfügen */
+    const s = document.createElement('script');
+    s.type = 'module';
+    s.src = l;
+    document.head.appendChild(s);
   </script>
+
+  <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">
+    1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
+  </div><br>
 
   <esp-web-install-button manifest="./manifest.json">
     <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">

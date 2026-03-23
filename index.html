@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
   <meta charset="utf-8">
   <title>ESP32 Installer</title>
 </head>
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
-  
   <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
 
   <script type="module">
-    /* Wir laden das Programm über einen unzerstörbaren Weg */
-    const code = "https://unpkg.com";
-    const s = document.createElement('script');
-    s.type = 'module';
-    s.src = code;
-    document.head.appendChild(s);
+    /* Wir laden das Programm ueber eine verschluesselte ID */
+    const data = "aHR0cHM6Ly91bnBrZy5jb20vZXNwLXdlYi10b29sc0AxMC9kaXN0L3dlYi1pbnN0YWxsLWJ1dHRvbi5qcw==";
+    const url = atob(data);
+    import(url).then(() => console.log("Geladen!")).catch(e => {
+        const s = document.createElement('script');
+        s.type = 'module';
+        s.src = "https://jsdelivr.net";
+        document.head.appendChild(s);
+    });
   </script>
 
   <esp-web-install-button manifest="./manifest.json">

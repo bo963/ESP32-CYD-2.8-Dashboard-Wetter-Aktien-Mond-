@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESP32 CYD Dashboard Installer</title>
+    
+    <!-- Stabiler, offizieller Link ohne CORS-Probleme -->
+    <script type="module" src="https://unpkg.com"></script>
+
     <style>
         body { font-family: sans-serif; background-color: #121212; color: #e0e0e0; text-align: center; padding: 40px; }
         .box { background: #1e1e1e; padding: 25px; border-radius: 12px; border: 1px solid #333; display: inline-block; text-align: left; margin-bottom: 30px; }
         button { background-color: #28a745; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #218838; }
     </style>
 </head>
 <body>
@@ -19,26 +24,14 @@
         3. Click the button below
     </div><br>
 
-    <!-- Der Button -->
+    <!-- Der Web-Installer Button -->
     <esp-web-install-button manifest="manifest.json">
         <button slot="activate">Connect & Install Stock Tracker</button>
     </esp-web-install-button>
 
-    <!-- DAS SKRIPT DIREKT EINGEBETTET (KEIN EXTERN-LOAD) -->
-    <script type="module">
-        import { LitElement, html } from "https://esm.sh";
-        class EspWebInstallButton extends LitElement {
-            static properties = { manifest: { type: String } };
-            render() { return html`<slot name="activate" @click=${this._handleClick}><button>Install</button></slot>`; }
-            async _handleClick() {
-                const mod = await import("https://esm.sh");
-                const el = document.createElement("ewt-install-dialog");
-                el.manifest = this.manifest;
-                document.body.appendChild(el);
-            }
-        }
-        customElements.define("esp-web-install-button", EspWebInstallButton);
-    </script>
+    <p style="margin-top: 50px; color: #666; font-size: 0.8em;">
+        Works only in Google Chrome or Microsoft Edge via USB.
+    </p>
 
 </body>
 </html>

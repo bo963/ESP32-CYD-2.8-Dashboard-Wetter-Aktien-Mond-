@@ -7,18 +7,12 @@
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
   
-  <script>
-    /* Hex-Code verhindert das Kuerzen der URL durch den Browser */
-    const h = "68747470733a2f2f756e706b672e636f6d2f6573702d7765622d746f6f6c734031302f646973742f7765622d696e7374616c6c2d627574746f6e2e6a73";
-    let l = "";
-    for (let i = 0; i < h.length; i += 2) {
-      l += String.fromCharCode(parseInt(h.substr(i, 2), 16));
-    }
-    /* Skript direkt in den Header einfügen */
-    const s = document.createElement('script');
-    s.type = 'module';
-    s.src = l;
-    document.head.appendChild(s);
+  <script type="module">
+    /* Wir bauen den Link aus drei Teilen - das kann kein Browser kuerzen */
+    const teil1 = "https://unpkg.com";
+    const teil2 = "esp-web-tools@10/";
+    const teil3 = "dist/web-install-button.js";
+    import(teil1 + teil2 + teil3);
   </script>
 
   <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">

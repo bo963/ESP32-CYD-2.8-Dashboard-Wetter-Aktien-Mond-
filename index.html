@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title>ESP32 Installer</title>
-  <!-- Wir laden das Programm von jsDelivr - das ist am sichersten gegen CORS-Fehler -->
-  <script type="module" src="https://jsdelivr.net"></script>
 </head>
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
+  
   <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
+
+  <script type="module">
+    /* Hex-Code verhindert, dass GitHub oder Chrome den Link kuerzen */
+    const hex = "68747470733a2f2f63646e2e6a7364656c6976722e6e65742f6e706d2f6573702d7765622d746f6f6c734031302f646973742f7765622d696e7374616c6c2d627574746f6e2e6a73";
+    let url = "";
+    for (let i = 0; i < hex.length; i += 2) {
+      url += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    }
+    import(url);
+  </script>
 
   <esp-web-install-button manifest="./manifest.json">
     <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">

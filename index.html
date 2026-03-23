@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>ESP32 Installer</title>
-    <script type="module" src="https://unpkg.com"></script>
-    <style>
-        body { font-family: sans-serif; background-color: #121212; color: white; text-align: center; padding: 50px; }
-        .box { background: #1e1e1e; padding: 20px; border: 1px solid #333; border-radius: 10px; display: inline-block; margin-bottom: 20px; }
-        button { background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.2em; cursor: pointer; }
-    </style>
+  <meta charset="utf-8" />
+  <title>ESP32 Dashboard Installer</title>
+  <style>
+    body { font-family: sans-serif; background: #121212; color: white; text-align: center; padding: 50px; }
+    .box { background: #1e1e1e; padding: 20px; border: 1px solid #333; border-radius: 10px; display: inline-block; margin-bottom: 20px; }
+  </style>
 </head>
 <body>
-    <h1>Installation</h1>
-    <div class="box">
-        1. Connect ESP32 via USB<br>
-        2. Use Chrome or Edge<br>
-        3. Click the button
-    </div><br>
+  <h1>Installation</h1>
+  <div class="box">
+    1. Connect ESP32 via USB cable<br>
+    2. Use a normal Chrome window (not Incognito)<br>
+    3. Click the button below
+  </div><br>
 
-    <esp-web-install-button manifest="manifest.json">
-        <button slot="activate">Connect & Install Stock Tracker</button>
-    </esp-web-install-button>
+  <!-- Dieser Button nutzt eine stabilere Technik -->
+  <script type="module" src="https://unpkg.com"></script>
+  
+  <esp-web-install-button manifest="manifest.json">
+    <button slot="activate" style="background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.2em; cursor: pointer;">
+      Connect & Install Stock Tracker
+    </button>
+  </esp-web-install-button>
+
 </body>
 </html>

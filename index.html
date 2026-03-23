@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>ESP32 Installer</title>
-  <!-- Dieser Link ist so kurz, dass er nicht gekürzt werden kann -->
-  <script type="module" src="https://gstatic.com"></script>
+  <!-- Wir laden den Code jetzt direkt aus DEINEM Repository Ordner -->
+  <script type="module" src="./web-install-button.js"></script>
 </head>
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
+  
   <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
 
-  <esp-web-install-button manifest="manifest.json">
+  <!-- Das manifest muss im selben Ordner liegen -->
+  <esp-web-install-button manifest="./manifest.json">
     <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">
       Verbinden & Installieren
     </button>

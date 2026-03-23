@@ -3,44 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 CYD Stock & Weather Dashboard Installer</title>
-    
-    <!-- Stabilerer Link für den Web-Flasher -->
-    <script type="module" src="install-button.js"></script>
-
+    <title>ESP32 CYD Dashboard Installer</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #e0e0e0; background-color: #121212; max-width: 600px; margin: 40px auto; padding: 20px; text-align: center; }
-        h1 { color: #ffffff; margin-bottom: 30px; }
-        .step-container { text-align: left; background: #1e1e1e; padding: 25px; border-radius: 12px; border: 1px solid #333; margin-bottom: 30px; }
-        .step { margin-bottom: 15px; display: flex; align-items: flex-start; }
-        .step-number { background: #28a745; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-weight: bold; font-size: 14px; }
-        .footer { font-size: 0.9em; color: #888; margin-top: 40px; }
-        
-        /* Das Design des Buttons */
-        button { background-color: #28a745; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        button:hover { background-color: #218838; }
+        body { font-family: sans-serif; background-color: #121212; color: #e0e0e0; text-align: center; padding: 40px; }
+        .box { background: #1e1e1e; padding: 25px; border-radius: 12px; border: 1px solid #333; display: inline-block; text-align: left; margin-bottom: 30px; }
+        button { background-color: #28a745; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <h1>Installation</h1>
+    <div class="box">
+        1. Connect ESP32 via USB cable<br>
+        2. Use Chrome or Edge browser<br>
+        3. Click the button below
+    </div><br>
 
-    <div class="step-container">
-        <div class="step"><div class="step-number">1</div><div>Connect your ESP32 to your computer with a USB cable.</div></div>
-        <div class="step"><div class="step-number">2</div><div>Click the 'Connect' button below. <b>Use Chrome or Edge browser.</b></div></div>
-        <div class="step"><div class="step-number">3</div><div>Choose "USB Serial" when asked.</div></div>
-        <div class="step"><div class="step-number">4</div><div>Click 'Install' and wait for it to finish.</div></div>
-    </div>
-
-    <!-- Der Web Flasher Button -->
+    <!-- Der Button -->
     <esp-web-install-button manifest="manifest.json">
         <button slot="activate">Connect & Install Stock Tracker</button>
     </esp-web-install-button>
 
-    <div class="footer">
-        Installation only works in Google Chrome or Microsoft Edge.<br>
-        Make sure to use a <b>USB Data Cable</b>, not just a charging cable.
-    </div>
+    <!-- DAS SKRIPT DIREKT EINGEBETTET (KEIN EXTERN-LOAD) -->
+    <script type="module">
+        import { LitElement, html } from "https://esm.sh";
+        class EspWebInstallButton extends LitElement {
+            static properties = { manifest: { type: String } };
+            render() { return html`<slot name="activate" @click=${this._handleClick}><button>Install</button></slot>`; }
+            async _handleClick() {
+                const mod = await import("https://esm.sh");
+                const el = document.createElement("ewt-install-dialog");
+                el.manifest = this.manifest;
+                document.body.appendChild(el);
+            }
+        }
+        customElements.define("esp-web-install-button", EspWebInstallButton);
+    </script>
 
 </body>
 </html>

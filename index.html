@@ -7,14 +7,16 @@
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
   
+  <script type="module">
+    /* Wir stueckeln den Link, damit er NICHT gekuerzt werden kann */
+    const h = "https://jsdelivr.net";
+    const p = "npm/esp-web-tools@10/dist/web-install-button.js";
+    import(h + p);
+  </script>
+
   <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
-
-  <script type="module">
-    /* Korrigierter Link mit "cdn." am Anfang */
-    import "https://cdn.jsdelivr.net";
-  </script>
 
   <esp-web-install-button manifest="./manifest.json">
     <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">

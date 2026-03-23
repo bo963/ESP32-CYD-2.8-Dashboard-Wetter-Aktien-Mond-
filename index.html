@@ -1,45 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 CYD Dashboard Installer</title>
+    <title>ESP32 Installer</title>
+    <script type="module" src="https://unpkg.com"></script>
     <style>
-        body { font-family: sans-serif; background-color: #121212; color: #e0e0e0; text-align: center; padding: 40px; }
-        .box { background: #1e1e1e; padding: 25px; border-radius: 12px; border: 1px solid #333; display: inline-block; text-align: left; margin-bottom: 30px; }
-        button { background-color: #28a745; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-        button:hover { background-color: #218838; }
+        body { font-family: sans-serif; background-color: #121212; color: white; text-align: center; padding: 50px; }
+        .box { background: #1e1e1e; padding: 20px; border: 1px solid #333; border-radius: 10px; display: inline-block; margin-bottom: 20px; }
+        button { background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.2em; cursor: pointer; }
     </style>
 </head>
 <body>
-
     <h1>Installation</h1>
     <div class="box">
-        1. Connect ESP32 via USB cable<br>
-        2. Use Chrome or Edge browser<br>
-        3. Click the button below
+        1. Connect ESP32 via USB<br>
+        2. Use Chrome or Edge<br>
+        3. Click the button
     </div><br>
 
-    <!-- Der Button -->
     <esp-web-install-button manifest="manifest.json">
         <button slot="activate">Connect & Install Stock Tracker</button>
     </esp-web-install-button>
-
-    <!-- DER ULTIMATIVE FIX: Das Skript wird von einer stabilen Google-Quelle geladen, die GitHub fast nie blockiert -->
-    <script type="module">
-      import { LitElement, html } from "https://esm.sh";
-      class EspWebInstallButton extends LitElement {
-        static properties = { manifest: { type: String } };
-        render() { return html`<slot name="activate" @click=${this._handleClick}><button>Install</button></slot>`; }
-        async _handleClick() {
-          const mod = await import("https://esm.sh");
-          const el = document.createElement("ewt-install-dialog");
-          el.manifest = this.manifest;
-          document.body.appendChild(el);
-        }
-      }
-      customElements.define("esp-web-install-button", EspWebInstallButton);
-    </script>
-
 </body>
 </html>

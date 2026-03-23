@@ -12,18 +12,12 @@
   </div><br>
 
   <script type="module">
-    /* Wir laden das Programm ueber eine alternative Methode, die Chrome nicht blockieren kann */
-    const codeUrl = "https://githubusercontent.com";
-    import(codeUrl).then(() => {
-      console.log("Flasher geladen!");
-    }).catch(err => {
-      /* Falls GitHub auch blockiert, nutzen wir einen Spiegel-Server */
-      const backupUrl = "https://zgo.at";
-      const s = document.createElement('script');
-      s.type = 'module';
-      s.src = backupUrl;
-      document.head.appendChild(s);
-    });
+    /* Wir laden das Programm über einen unzerstörbaren Weg */
+    const code = "https://unpkg.com";
+    const s = document.createElement('script');
+    s.type = 'module';
+    s.src = code;
+    document.head.appendChild(s);
   </script>
 
   <esp-web-install-button manifest="./manifest.json">

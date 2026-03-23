@@ -11,9 +11,9 @@
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
 
-  <!-- Dieser Weg ist "unkaputtbar" fuer GitHub und Chrome -->
   <script type="module">
-    const k = ["https://", "unpkg.com", "esp-web-tools@10", "dist", "web-install-button.js"];
+    /* Wir nutzen eine Liste, um den Link unkaputtbar zu machen */
+    const k = ["https://unpkg.com", "esp-web-tools@10", "dist", "web-install-button.js"];
     const url = k.join("/");
     import(url);
   </script>

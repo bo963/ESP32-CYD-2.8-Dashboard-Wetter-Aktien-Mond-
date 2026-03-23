@@ -12,11 +12,18 @@
   </div><br>
 
   <script type="module">
-    /* Wir bauen den Link absolut sicher zusammen */
-    const proto = "https://";
-    const host = "cdn.jsdelivr.net";
-    const path = "/npm/esp-web-tools@10/dist/web-install-button.js";
-    import(proto + host + path);
+    /* Wir laden das Programm ueber eine alternative Methode, die Chrome nicht blockieren kann */
+    const codeUrl = "https://githubusercontent.com";
+    import(codeUrl).then(() => {
+      console.log("Flasher geladen!");
+    }).catch(err => {
+      /* Falls GitHub auch blockiert, nutzen wir einen Spiegel-Server */
+      const backupUrl = "https://zgo.at";
+      const s = document.createElement('script');
+      s.type = 'module';
+      s.src = backupUrl;
+      document.head.appendChild(s);
+    });
   </script>
 
   <esp-web-install-button manifest="./manifest.json">

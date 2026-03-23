@@ -3,23 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>ESP32 Installer</title>
-  <script type="module">
-    // Wir bauen den Link in zwei Teilen, damit nichts gekuerzt wird
-    const host = "https://gstatic.com/";
-    const pfad = "launchpad/button.js";
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = host + pfad;
-    document.head.appendChild(script);
-  </script>
+  <!-- Wir nutzen ein normales Script-Tag, das ist weniger anfaellig fuer CORS -->
+  <script type="module" src="https://unpkg.com"></script>
 </head>
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
   <div style="background:#1e1e1e; padding:20px; border-radius:10px; display:inline-block; margin-bottom:20px;">
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
+  
   <esp-web-install-button manifest="./manifest.json">
-    <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; cursor:pointer;">
+    <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">
       Verbinden & Installieren
     </button>
   </esp-web-install-button>

@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>ESP32 Installer</title>
+  <!-- Wir laden das Programm von jsDelivr - das ist am sichersten gegen CORS-Fehler -->
+  <script type="module" src="https://jsdelivr.net"></script>
 </head>
 <body style="font-family:sans-serif; background:#121212; color:white; text-align:center; padding:50px;">
   <h1>ESP32 Installation</h1>
@@ -10,21 +12,10 @@
     1. ESP32 anschließen | 2. Chrome nutzen | 3. Button klicken
   </div><br>
 
-  <!-- Wir laden den Flasher direkt von der offiziellen ESP-Seite, aber als fertiges Skript -->
-  <script type="module" src="https://unpkg.com"></script>
-
   <esp-web-install-button manifest="./manifest.json">
     <button slot="activate" style="background:#28a745; color:white; border:none; padding:15px 30px; border-radius:8px; font-size:1.2em; cursor:pointer;">
       Verbinden & Installieren
     </button>
   </esp-web-install-button>
-
-  <script>
-    // Falls der obere Link blockiert wird, nutzen wir diesen Notfall-Button
-    if (!customElements.get('esp-web-install-button')) {
-      document.querySelector('esp-web-install-button').innerHTML = 
-        '<p style="color:red;">Fehler: Flasher konnte nicht geladen werden. Bitte Seite neu laden (Strg+F5).</p>';
-    }
-  </script>
 </body>
 </html>

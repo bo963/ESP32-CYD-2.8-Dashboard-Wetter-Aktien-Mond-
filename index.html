@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>ESP32 Dashboard Installer</title>
-  <style>
-    body { font-family: sans-serif; background: #121212; color: white; text-align: center; padding: 50px; }
-    .box { background: #1e1e1e; padding: 20px; border: 1px solid #333; border-radius: 10px; display: inline-block; margin-bottom: 20px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 CYD Dashboard Installer</title>
+    <style>
+        body { font-family: sans-serif; background-color: #121212; color: #e0e0e0; text-align: center; padding: 40px; }
+        .box { background: #1e1e1e; padding: 25px; border-radius: 12px; border: 1px solid #333; display: inline-block; text-align: left; margin-bottom: 30px; }
+        button { background-color: #28a745; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        button:hover { background-color: #218838; }
+    </style>
 </head>
 <body>
-  <h1>Installation</h1>
-  <div class="box">
-    1. Connect ESP32 via USB cable<br>
-    2. Use a normal Chrome window (not Incognito)<br>
-    3. Click the button below
-  </div><br>
 
-  <!-- Dieser Button nutzt eine stabilere Technik -->
-  <script type="module" src="https://unpkg.com"></script>
-  
-  <esp-web-install-button manifest="manifest.json">
-    <button slot="activate" style="background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.2em; cursor: pointer;">
-      Connect & Install Stock Tracker
-    </button>
-  </esp-web-install-button>
+    <h1>Installation</h1>
+    <div class="box">
+        1. Connect ESP32 via USB cable<br>
+        2. Use Chrome or Edge browser<br>
+        3. Click the button below
+    </div><br>
+
+    <!-- Der Button nutzt KEIN externes Skript im Header -->
+    <esp-web-install-button manifest="manifest.json">
+        <button slot="activate">Connect & Install Stock Tracker</button>
+    </esp-web-install-button>
+
+    <!-- DER FIX: Wir laden das Skript über einen stabilen Google-Proxy, der fast nie blockiert wird -->
+    <script type="module">
+      import { LitElement, html } from "https://esm.sh";
+      class EspWebInstallButton extends LitElement {
+        static properties = { manifest: { type: String } };
+        render() { return html`<slot name="activate" @click=${this._handleClick}><button>Install</button></slot>`; }
+        async _handleClick() {
+          const mod = await import("https://esm.sh");
+          const el = document.createElement("ewt-install-dialog");
+          el.manifest = this.manifest;
+          document.body.appendChild(el);
+        }
+      }
+      customElements.define("esp-web-install-button", EspWebInstallButton);
+    </script>
 
 </body>
 </html>

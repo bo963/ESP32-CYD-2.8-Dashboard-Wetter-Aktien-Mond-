@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Installer</title>
   
-  <!-- OFFIZIELLES CDN (komplett mit allen Chunks) -->
-  <script type="module" 
-    src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module">
-  </script>
+  <!-- BASE für korrekte CDN‑Chunk‑Pfade -->
+  <base href="https://unpkg.com/esp-web-tools@10/">
   
-  <!-- Rest deines Styles/CSS bleibt gleich -->
-  <style>...</style>
+  <script type="module" src="dist/web/install-button.js?module"></script>
+  
+  <!-- Dein Style... -->
 </head>
+
 <body>
   <!-- Rest unverändert -->
   <esp-web-install-button manifest="./manifest.json">

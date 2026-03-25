@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Installer</title>
   
-  <!-- CDN OHNE BASE (Design bleibt) -->
-  <script type="module" 
-    src="https://esphome.github.io/esp-web-tools/install-button.js">
-  </script>
+  <!-- OFFIZIELLE ESPHOME URL - immer stabil -->
+  <script type="module" src="https://unpkg.com/@esphome/esp-web-tools@1/dist/web/install-button.js?module"></script>
   
-  <!-- DEIN DESIGN -->
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #121212; color: white; text-align: center; padding: 50px 20px; margin: 0; }
@@ -28,7 +25,6 @@
   <div class="container">
     1. ESP32 anschließen | 2. Chrome/Edge nutzen | 3. Button klicken
   </div>
-  <br>
   
   <esp-web-install-button manifest="manifest.json">
     <button slot="activate">Verbinden & Installieren</button>

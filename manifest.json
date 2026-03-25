@@ -7,7 +7,7 @@
       "parts": [
         {
           "url": "https://raw.githubusercontent.com/bo963/ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-/main/firmware.bin",
-          "offset": 0
+          "offset": 0x10000
         }
       ]
     }

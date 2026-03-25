@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Installer</title>
   
-  <!-- STYLE VOR BASE (damit es lokal bleibt) -->
+  <!-- CDN OHNE BASE (Design bleibt) -->
+  <script type="module" 
+    src="https://esphome.github.io/esp-web-tools/install-button.js">
+  </script>
+  
+  <!-- DEIN DESIGN -->
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #121212; color: white; text-align: center; padding: 50px 20px; margin: 0; }
@@ -17,10 +22,6 @@
       cursor: pointer; transition: background 0.3s; }
     button[slot="activate"]:hover { background: #218838; }
   </style>
-  
-  <!-- BASE NACH Style (nur für JS) -->
-  <base href="https://unpkg.com/esp-web-tools@10/">
-  <script type="module" src="dist/web/install-button.js?module"></script>
 </head>
 <body>
   <h1>ESP32 Installation</h1>
@@ -34,8 +35,7 @@
   </esp-web-install-button>
   
   <p style="margin-top: 40px; color: #888; font-size: 0.9em;">
-    Hinweis: Funktioniert nur in Chromium-basierten Browsern (Chrome, Edge, Opera).<br>
-    Stellen Sie sicher, dass keine andere Software den COM-Port blockiert.
+    Hinweis: Funktioniert nur in Chromium-basierten Browsern (Chrome, Edge, Opera).
   </p>
 </body>
 </html>

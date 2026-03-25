@@ -5,9 +5,11 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "./firmware.bin", "offset": 0 }
+        {
+          "url": "https://raw.githubusercontent.com/bo963/ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-/main/firmware.bin",
+          "offset": 0
+        }
       ]
     }
   ]
 }
-

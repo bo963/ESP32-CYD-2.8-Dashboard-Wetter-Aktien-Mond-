@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Installer</title>
 
- <script
-  type="module"
-  src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
-></script>
-<esp-web-install-button manifest="./manifest.json">
-  <button slot="activate">Verbinden & Installieren</button>
-</esp-web-install-button>
+  <!-- ESP Web Tools einbinden -->
+  <script
+    type="module"
+    src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+  ></script>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -62,8 +61,9 @@
 
   <br>
 
+  <!-- Install-Button mit deinem lokalen Manifest -->
   <esp-web-install-button manifest="./manifest.json">
-    <button slot="activate">Verbinden & Installieren</button>
+    <button slot="activate">Verbinden &amp; Installieren</button>
   </esp-web-install-button>
 
   <p style="margin-top: 40px; color: #888; font-size: 0.9em;">

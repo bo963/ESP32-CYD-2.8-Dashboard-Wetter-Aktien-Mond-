@@ -79,32 +79,22 @@
         width: 100%;
         max-width: 280px;
       }
-      button[slot="activate"] {
-        width: 100%;
-        max-width: 280px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>ESP32 Installation</h1>
+       <br><br>
 
-  <div class="container">
-    1. ESP32 anschließen | 2. Chrome/Edge nutzen | 3. Version wählen &amp; klicken
-  </div>
-
-  <br><br>
-
-  <!-- Install-Button mit Sprachauswahl -->
-  <esp-web-install-button
-    manifest="https://bo963.github.io/ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-/manifest.json"
-  >
+  <!-- Korrekter Webflasher mit stabiler Sprachauswahl -->
+  <esp-web-install-button id="installer">
     <select slot="builds">
       <option value="German Version (Deutsch)">Deutsch (DE)</option>
       <option value="English Version (Englisch)">English (EN)</option>
     </select>
     <button slot="activate">Verbinden &amp; Installieren</button>
   </esp-web-install-button>
+
+  <script>
+    const user = "bo963";
+    const project = "ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-";
+    document.getElementById("installer").setAttribute("manifest", "https://" + user + ".github.io/" + project + "/manifest.json");
+  </script>
 
   <p style="margin-top: 40px; color: #888; font-size: 0.9em;">
     Hinweis: Funktioniert nur in Chromium-basierten Browsern (Chrome, Edge, Opera).

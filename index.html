@@ -18,10 +18,22 @@
   <div class="container">
     1. ESP32 anschließen | 2. Chrome/Edge nutzen | 3. Klicken
   </div>
-  <br><br>
-  <esp-web-install-button manifest="manifest.json">
+    <br><br>
+
+  <!-- Install-Button mit dynamischer Link-Zuweisung -->
+  <esp-web-install-button id="installer">
     <button slot="activate">Verbinden &amp; Installieren</button>
   </esp-web-install-button>
+
+  <script>
+    (function() {
+      var n = "bo963";
+      var r = "ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-";
+      var url = "https://" + n + ".github.io/" + r + "/manifest.json";
+      document.getElementById("installer").setAttribute("manifest", url);
+    })();
+  </script>
+
   <p style="margin-top: 40px; color: #888; font-size: 0.9em;">
     Hinweis: Funktioniert nur in Chromium-basierten Browsern (Chrome, Edge, Opera).
   </p>

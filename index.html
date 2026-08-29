@@ -79,22 +79,16 @@
         width: 100%;
         max-width: 280px;
       }
-       <br><br>
+        <br><br>
 
-  <!-- Korrekter Webflasher mit stabiler Sprachauswahl -->
-  <esp-web-install-button id="installer">
+  <!-- Stabile Sprachauswahl über relativen Pfad -->
+  <esp-web-install-button manifest="manifest.json">
     <select slot="builds">
       <option value="German Version (Deutsch)">Deutsch (DE)</option>
       <option value="English Version (Englisch)">English (EN)</option>
     </select>
     <button slot="activate">Verbinden &amp; Installieren</button>
   </esp-web-install-button>
-
-  <script>
-    const user = "bo963";
-    const project = "ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-";
-    document.getElementById("installer").setAttribute("manifest", "https://" + user + ".github.io/" + project + "/manifest.json");
-  </script>
 
   <p style="margin-top: 40px; color: #888; font-size: 0.9em;">
     Hinweis: Funktioniert nur in Chromium-basierten Browsern (Chrome, Edge, Opera).

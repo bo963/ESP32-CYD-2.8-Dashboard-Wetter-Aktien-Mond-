@@ -35,6 +35,25 @@
       color: #00e676;
     }
 
+    /* Styling für das Sprach-Dropdown-Menü */
+    select[slot="builds"] {
+      background: #2a2a2a;
+      color: white;
+      border: 2px solid #00e676;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 15px;
+      outline: none;
+      vertical-align: middle;
+    }
+
+    select[slot="builds"]:hover {
+      background: #333333;
+    }
+
     button[slot="activate"] {
       background: #28a745;
       color: white;
@@ -45,10 +64,25 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
+      vertical-align: middle;
     }
 
     button[slot="activate"]:hover {
       background: #218838;
+    }
+
+    /* Setzt Dropdown und Button auf Mobilgeräten untereinander */
+    @media (max-width: 600px) {
+      select[slot="builds"] {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 280px;
+      }
+      button[slot="activate"] {
+        width: 100%;
+        max-width: 280px;
+      }
     }
   </style>
 </head>
@@ -56,17 +90,21 @@
   <h1>ESP32 Installation</h1>
 
   <div class="container">
-    1. ESP32 anschließen | 2. Chrome/Edge nutzen | 3. Button klicken
+    1. ESP32 anschließen | 2. Chrome/Edge nutzen | 3. Version wählen &amp; klicken
   </div>
 
-  <br>
+  <br><br>
 
-  <!-- Install-Button mit deinem lokalen Manifest -->
- <esp-web-install-button
-  manifest="https://bo963.github.io/ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-/manifest.json"
->
-  <button slot="activate">Verbinden &amp; Installieren</button>
-</esp-web-install-button>
+  <!-- Install-Button mit Sprachauswahl -->
+  <esp-web-install-button
+    manifest="https://bo963.github.io/ESP32-CYD-2.8-Dashboard-Wetter-Aktien-Mond-/manifest.json"
+  >
+    <select slot="builds">
+      <option value="German Version (Deutsch)">Deutsch (DE)</option>
+      <option value="English Version (Englisch)">English (EN)</option>
+    </select>
+    <button slot="activate">Verbinden &amp; Installieren</button>
+  </esp-web-install-button>
 
   <p style="margin-top: 40px; color: #888; font-size: 0.9em;">
     Hinweis: Funktioniert nur in Chromium-basierten Browsern (Chrome, Edge, Opera).

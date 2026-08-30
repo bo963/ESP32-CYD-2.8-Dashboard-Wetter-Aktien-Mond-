@@ -1,0 +1,21 @@
+{
+  "name": "ESP32 CYD Dashboard",
+  "version": "1.2.0",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "name": "German Version (Deutsch)",
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "Multi_Display.ino.merged_DE.bin", "offset": 0 }
+      ]
+    },
+    {
+      "name": "English Version (Englisch)",
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "Multi_Display.ino.merged_EN.bin", "offset": 0 }
+      ]
+    }
+  ]
+}
